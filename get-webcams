@@ -1,0 +1,5 @@
+#!/bin/sh
+for camera in lodge summit glory; do
+  curl https://webcams.skiwhitewater.com/webcams/$camera/current.jpg --silent --output $camera.jpg
+done
+
