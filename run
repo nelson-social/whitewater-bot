@@ -1,4 +1,6 @@
 #!/bin/sh
 
+set -e
+
 ./get-webcams
 ./post-status $(./post-media)
