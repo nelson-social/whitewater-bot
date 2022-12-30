@@ -1,0 +1,4 @@
+#!/bin/sh
+
+./get-webcams
+./post-status $(./post-media)
