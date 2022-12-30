@@ -6,8 +6,10 @@ for id in "$@"; do
   data+="&media_ids[]=$id"
 done
 
+echo "Waiting for media to process"
 # TODO: poll for a 200 response from /api/v1/media/:id
 sleep 10 # Hack to workaround "Cannot attach files that have not finished processing. Try again in a moment!" error.
 
+echo "Posting status"
 # Post the status
 curl --silent -H "Authorization: Bearer $MASTODON_TOKEN" -X POST https://nelson.social/api/v1/statuses -d "$data"
