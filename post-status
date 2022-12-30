@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 data="status=Here's today's webcams!"
 for id in "$@"; do
