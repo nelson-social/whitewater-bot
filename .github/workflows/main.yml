@@ -1,0 +1,11 @@
+on:
+  workflow_dispatch:
+  
+jobs:
+  post-webcams:
+    runs-on: ubuntu-latest
+    env:
+      MASTODON_TOKEN: ${{ secrets.MASTODON_TOKEN }}
+    steps:
+      - uses: actions/checkout@v3
+      - run: ./run
