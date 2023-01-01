@@ -27,6 +27,9 @@ async function post<F>(path: string, formData: FormData): Promise<F> {
     body: formData,
     headers: HEADERS,
   });
+  if (!res.ok) {
+    throw new Error(`Mastodon returned ${res.status}: ${res.statusText}`);
+  }
   return (await res.json()) as F;
 }
 
@@ -34,6 +37,9 @@ async function get<F>(path: string): Promise<F> {
   const res = await fetch(new URL(path, MASTODON_API).href, {
     headers: HEADERS,
   });
+  if (!res.ok) {
+    throw new Error(`Mastodon returned ${res.status}: ${res.statusText}`);
+  }
   return (await res.json()) as F;
 }
 
