@@ -1,47 +1,46 @@
 import { JSDOM } from 'jsdom';
 import fetch from 'node-fetch';
+import {
+  nodeIsElement,
+  selectElements,
+  selectInt,
+  selectText,
+} from './util/dom.js';
+import { isTruthy } from './util/functional.js';
 
 export type WhitewaterConditions = {
   weather: string;
   overnightSnowCm: number;
   baseTempDegC: number;
+  alert: string;
+  webcamImages: string[];
 };
 
-const WEB_URL = 'https://skiwhitewater.com/conditions/';
-
-function select(document: Document, selector: string): string {
-  const el = document.querySelector(selector);
-  if (!el) {
-    throw new Error(`Element not found at ${selector}`);
-  }
-  const text = el.textContent;
-  if (!text) {
-    throw new Error(`No textContent at ${selector}`);
-  }
-  return text.trim();
-}
+const WHITEWATER_CONDITIONS_URL = 'https://skiwhitewater.com/conditions/';
 
 export async function getWhitewaterConditions(): Promise<WhitewaterConditions> {
-  const res = await fetch(WEB_URL);
+  const res = await fetch(WHITEWATER_CONDITIONS_URL);
   const text = await res.text();
   const dom = new JSDOM(text);
   const document = dom.window.document;
 
   return {
-    weather: select(
+    weather: selectText(
       document,
       '.snow-summary__item--weather .snow-summary__desc'
     ),
-    overnightSnowCm: parseInt(
-      select(
-        document,
-        '.snow-summary__item--overnight .snow-summary__desc .value'
-      ),
-      10
+    overnightSnowCm: selectInt(
+      document,
+      '.snow-summary__item--overnight .snow-summary__desc .value'
     ),
-    baseTempDegC: parseInt(
-      select(document, '.snow-summary__item--base .snow-summary__desc .value'),
-      10
+    baseTempDegC: selectInt(
+      document,
+      '.snow-summary__item--base .snow-summary__desc .value'
     ),
+    alert: selectText(document, '.alert-banner a'),
+    webcamImages: selectElements(document, 'img.webcams__image')
+      .filter(nodeIsElement)
+      .map((el) => el.getAttribute('src') || '')
+      .filter(isTruthy),
   };
 }

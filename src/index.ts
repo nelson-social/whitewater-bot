@@ -1,9 +1,6 @@
 /* tslint:disable:no-console */
-import { getWhitewaterConditions } from './whitewater.js';
+import { postWeatherStatus } from './bot.js';
 
-async function run() {
-  const conditions = await getWhitewaterConditions();
-  console.log(conditions);
-}
-
-run().catch((e) => console.error(e));
+postWeatherStatus()
+  .then((status) => console.log(`Posted ${status.url}: ${status.content}`))
+  .catch((e) => console.error(e));
