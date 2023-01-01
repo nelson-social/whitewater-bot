@@ -6,6 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       MASTODON_TOKEN: ${{ secrets.MASTODON_TOKEN }}
+      MASTODON_API: https://nelson.social/api/
     steps:
       - uses: actions/checkout@v3
-      - run: ./run
+      - run: npm run post-status
