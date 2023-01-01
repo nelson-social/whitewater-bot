@@ -1,6 +1,6 @@
 import fetch from 'node-fetch';
 import * as fs from 'fs';
-import tmp from 'tmp';
+import * as tmp from 'tmp';
 
 export async function downloadFile(url: string): Promise<string> {
   const res = await fetch(url);

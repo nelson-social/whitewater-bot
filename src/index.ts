@@ -1,4 +1,4 @@
-/* tslint:disable:no-console */
+/* eslint-disable no-console */
 import { postWeatherStatus } from './bot.js';
 
 postWeatherStatus()

@@ -1,7 +1,8 @@
 import { getWhitewaterConditions } from './whitewater.js';
 import { isMediaReady, postMedia, postStatus } from './mastodon.js';
 import { downloadFile } from './util/fetch.js';
-import { delay, isTruthy } from './util/functional.js';
+import { isTruthy } from './util/functional.js';
+import retry from 'async-retry';
 
 export async function postWeatherStatus() {
   const conditions = await getWhitewaterConditions();
@@ -10,13 +11,13 @@ export async function postWeatherStatus() {
   );
   const mediaAttachments = await Promise.all(webcamImageFiles.map(postMedia));
   const mediaIds = mediaAttachments.map((m) => m.id);
-  while (true) {
+  await retry(async () => {
+    console.log('Awaiting media processing...');
     const allReady = await Promise.all(mediaIds.map(isMediaReady));
-    if (allReady.filter(isTruthy).length === mediaIds.length) {
-      break;
+    if (allReady.filter(isTruthy).length < mediaIds.length) {
+      throw new Error('Not all media is ready');
     }
-    await delay(1000);
-  }
+  });
   let statusText = `Weather: ${conditions.weather}
 Base temp: ${conditions.baseTempDegC} ℃
 Overnight snow: ${conditions.overnightSnowCm}`;
