@@ -8,5 +8,9 @@ jobs:
       MASTODON_TOKEN: ${{ secrets.MASTODON_TOKEN }}
       MASTODON_API: https://nelson.social/api/
     steps:
-      - uses: actions/checkout@v3
-      - run: npm run post-status
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 16
+    - run: npm ci
+    - run: npm run post-status
