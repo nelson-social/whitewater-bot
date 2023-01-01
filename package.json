@@ -11,7 +11,7 @@
     "build": "tsc",
     "start": "node lib/index.js",
     "post-status": "npm run build && npm start",
-    "lint": "eslint -c .eslintrc.cjs --ext .ts src",
+    "lint": "eslint --max-warnings=0 src",
     "prepare": "husky install"
   },
   "repository": {
@@ -44,7 +44,7 @@
     "prettier": "2.8.1"
   },
   "lint-staged": {
-    "src/**/*.{ts,tsx}": "tslint --fix",
+    "src/**/*.{ts,tsx}": "eslint --fix --max-warnings=0",
     "src/**/*.{js,jsx,ts,tsx,css,scss,md}": "prettier --write --ignore-unknown"
   }
 }
