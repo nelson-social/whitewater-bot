@@ -11,7 +11,8 @@
     "build": "tsc",
     "start": "node lib/index.js",
     "post-status": "npm run build && npm start",
-    "lint": "eslint -c .eslintrc.cjs --ext .ts src"
+    "lint": "eslint -c .eslintrc.cjs --ext .ts src",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
