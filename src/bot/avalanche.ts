@@ -3,15 +3,13 @@ import { Status } from '../service/mastodon.js';
 import { getAvalancheReport } from '../service/avalanche/avalanche.js';
 import humanDate from 'human-date';
 
-const { prettyPrint } = humanDate;
-
 export default class AvalancheReportBot extends BaseBot implements Bot {
   async postStatus(): Promise<Status | undefined> {
     const report = await getAvalancheReport();
     if (!report) {
       return;
     }
-    const statusText = `Forecast for Kootenay Boundary issued at ${prettyPrint(
+    const statusText = `Forecast for Kootenay Boundary issued at ${humanDate.prettyPrint(
       report.dateIssued
     )}:
 
