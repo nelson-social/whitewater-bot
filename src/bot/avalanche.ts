@@ -10,7 +10,8 @@ export default class AvalancheReportBot extends BaseBot implements Bot {
       return;
     }
     const statusText = `Forecast for Kootenay Boundary issued at ${humanDate.prettyPrint(
-      report.dateIssued
+      report.dateIssued,
+      { showTime: true }
     )}:
 
 ${report.highlights}
