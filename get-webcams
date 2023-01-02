@@ -1,9 +1,0 @@
-#!/bin/sh
-set -e
-
-echo "Fetching webcams..."
-for camera in lodge summit glory; do
-  echo "Fetching $camera"
-  curl https://webcams.skiwhitewater.com/webcams/$camera/current.jpg --silent --output $camera.jpg
-done
-echo "Done"
