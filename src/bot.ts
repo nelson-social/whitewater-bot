@@ -20,7 +20,7 @@ export async function postWeatherStatus() {
   });
   let statusText = `Weather: ${conditions.weather}
 Base temp: ${conditions.baseTempDegC} ℃
-Overnight snow: ${conditions.overnightSnowCm}`;
+Overnight snow: ${conditions.overnightSnowCm}cm`;
   if (conditions.alert) {
     statusText += `
 Message: ${conditions.alert}`;
