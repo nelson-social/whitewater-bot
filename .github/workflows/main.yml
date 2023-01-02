@@ -7,7 +7,6 @@ jobs:
   post-webcams:
     runs-on: ubuntu-latest
     env:
-      MASTODON_TOKEN: ${{ secrets.MASTODON_TOKEN }}
       MASTODON_API: https://nelson.social/api/
     steps:
     - uses: actions/checkout@v3
@@ -15,4 +14,5 @@ jobs:
       with:
         node-version: 16
     - run: npm ci
-    - run: npm run post-status
+    - run: MASTODON_TOKEN=${{ secrets.WHITEWATER_MASTODON_TOKEN }} npm run post-status whitewater
+    - run: MASTODON_TOKEN=${{ secrets.AVALANCHE_MASTODON_TOKEN }} npm run post-status avalanche
