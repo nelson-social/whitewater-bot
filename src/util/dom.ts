@@ -9,11 +9,11 @@ export function selectTextMaybe(
 export function selectText(document: Document, selector: string): string {
   const el = document.querySelector(selector);
   if (!el) {
-    return '';
+    throw new Error(`Element not found at ${selector}`);
   }
   const text = el.textContent;
   if (!text) {
-    return '';
+    throw new Error(`No textContent at ${selector}`);
   }
   return text.trim();
 }
