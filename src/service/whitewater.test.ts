@@ -5,7 +5,7 @@ import { fileURLToPath } from 'url';
 import { promises as fs } from 'fs';
 
 describe(getWhitewaterConditions.name, () => {
-  it("returns an empty alert then there's no alert displayed", async () => {
+  it("returns an empty alert when there's no alert displayed", async () => {
     const url = path.resolve(
       path.dirname(fileURLToPath(import.meta.url)),
       '../../test/fixtures/whitewater-homepage-no-alert.html'
