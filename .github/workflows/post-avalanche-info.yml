@@ -1,7 +1,9 @@
-name: Post webcams & weather
+name: Post Avalanche Forecast
 
 on:
   workflow_dispatch:
+  schedule:
+    - cron: '30 0 * * *' # 0:30am UTC = 16:30 PST
   
 jobs:
   post-webcams:
@@ -14,5 +16,4 @@ jobs:
       with:
         node-version: 16
     - run: npm ci
-    - run: MASTODON_TOKEN=${{ secrets.WHITEWATER_MASTODON_TOKEN }} npm run post-status whitewater
     - run: MASTODON_TOKEN=${{ secrets.AVALANCHE_MASTODON_TOKEN }} npm run post-status avalanche
