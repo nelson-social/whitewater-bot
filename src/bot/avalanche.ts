@@ -1,7 +1,9 @@
 import { BaseBot, Bot } from './bot.js';
 import { Status } from '../service/mastodon.js';
 import { getAvalancheReport } from '../service/avalanche/avalanche.js';
-import { prettyPrint } from 'human-date';
+import humanDate from 'human-date';
+
+const { prettyPrint } = humanDate;
 
 export default class AvalancheReportBot extends BaseBot implements Bot {
   async postStatus(): Promise<Status | undefined> {
