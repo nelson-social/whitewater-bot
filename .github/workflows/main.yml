@@ -1,3 +1,5 @@
+name: Post webcams & weather
+
 on:
   workflow_dispatch:
   
