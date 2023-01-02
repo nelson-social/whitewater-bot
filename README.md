@@ -16,6 +16,6 @@ npm install
 
 # Run
 ```bash
-MASTODON_TOKEN=<token> MASTODON_API=https://nelson.social/api/ npm run post-status
+MASTODON_TOKEN=<token> MASTODON_API=https://nelson.social/api/ npm run post-status (whitewater|avalanche)
 ```
 

@@ -6,8 +6,8 @@ import {
   selectInt,
   selectText,
   selectTextMaybe,
-} from './util/dom.js';
-import { isTruthy } from './util/functional.js';
+} from '../util/dom.js';
+import { isTruthy } from '../util/functional.js';
 
 export type WhitewaterConditions = {
   weather: string;
