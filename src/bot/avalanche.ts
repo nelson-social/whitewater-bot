@@ -8,7 +8,9 @@ export default class AvalancheReportBot extends BaseBot implements Bot {
     if (!report) {
       return;
     }
-    const statusText = `${report.highlights}
+    const statusText = `Forecast for Kootenay Boundary issued at ${report.dateIssued}:
+
+${report.highlights}
 
 Alpine: ${report.dangerRatings.alpine}
 Tree line: ${report.dangerRatings.treeline}
