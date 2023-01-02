@@ -5,6 +5,7 @@ import {
   selectElements,
   selectInt,
   selectText,
+  selectTextMaybe,
 } from './util/dom.js';
 import { isTruthy } from './util/functional.js';
 
@@ -18,10 +19,13 @@ export type WhitewaterConditions = {
 
 const WHITEWATER_CONDITIONS_URL = 'https://skiwhitewater.com/conditions/';
 
-export async function getWhitewaterConditions(): Promise<WhitewaterConditions> {
-  const res = await fetch(WHITEWATER_CONDITIONS_URL);
-  const text = await res.text();
-  const dom = new JSDOM(text);
+const fetchWhitewaterConditionsPage = async () =>
+  (await fetch(WHITEWATER_CONDITIONS_URL)).text();
+
+export async function getWhitewaterConditions(
+  fetchPageContent: () => Promise<string> = fetchWhitewaterConditionsPage
+): Promise<WhitewaterConditions> {
+  const dom = new JSDOM(await fetchPageContent());
   const document = dom.window.document;
 
   return {
@@ -37,7 +41,7 @@ export async function getWhitewaterConditions(): Promise<WhitewaterConditions> {
       document,
       '.snow-summary__item--base .snow-summary__desc .value'
     ),
-    alert: selectText(document, '.alert-banner a'),
+    alert: selectTextMaybe(document, '.alert-banner a') || '',
     webcamImages: selectElements(document, 'img.webcams__image')
       .filter(nodeIsElement)
       .map((el) => el.getAttribute('src') || '')

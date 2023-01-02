@@ -1,3 +1,11 @@
+export function selectTextMaybe(
+  document: Document,
+  selector: string
+): string | null {
+  if (!document.querySelector(selector)) return null;
+  return selectText(document, selector);
+}
+
 export function selectText(document: Document, selector: string): string {
   const el = document.querySelector(selector);
   if (!el) {

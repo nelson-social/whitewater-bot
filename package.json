@@ -7,7 +7,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "npm run build && mocha lib/**/*.test.js",
     "build": "tsc",
     "start": "node lib/index.js",
     "post-status": "npm run build && npm start",
@@ -35,12 +35,14 @@
   "devDependencies": {
     "@types/async-retry": "^1.4.5",
     "@types/jsdom": "^20.0.1",
+    "@types/mocha": "^10.0.1",
     "@types/tmp": "^0.2.3",
     "@typescript-eslint/eslint-plugin": "^5.47.1",
     "@typescript-eslint/parser": "^5.47.1",
     "eslint": "^8.31.0",
     "husky": "^8.0.2",
     "lint-staged": "^13.1.0",
+    "mocha": "^10.2.0",
     "prettier": "2.8.1"
   },
   "lint-staged": {
