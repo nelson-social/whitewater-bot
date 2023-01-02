@@ -7,7 +7,8 @@ on:
     - cron: '0 20 * * *'  # 20:00pm UTC = 12:00am PST
 
 jobs:
-  post-webcams:
+  post:
+    name: Post Whitewater webcams & weather
     runs-on: ubuntu-latest
     env:
       MASTODON_API: https://nelson.social/api/
