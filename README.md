@@ -1,8 +1,11 @@
 [![Run tests](https://github.com/nelson-social/whitewater-bot/actions/workflows/test.yml/badge.svg)](https://github.com/nelson-social/whitewater-bot/actions/workflows/test.yml)
 
-# whitewater-bot
+# nelson.social/bots
 
-Post Whitewater weather conditions to Mastodon at https://nelson.social/@WhitewaterBot
+Posts info to the following accounts:
+
+- https://nelson.social/@WhitewaterBot
+- https://nelson.social/@AvalancheBot
 
 # Prerequisites
 
