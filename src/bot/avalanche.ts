@@ -24,7 +24,7 @@ export default class AvalancheReportBot extends BaseBot implements Bot {
     return `#AvalancheForecast for #KootenayBoundary issued ${formatInTimeZone(
       new Date(report.dateIssued),
       STATUS_TIME_ZONE,
-      `MMM d, yyyy 'at' h:mma zzz`
+      `eeee MMM d, yyyy 'at' h:mma zzz`
     )}:
 
 ${report.highlights}
