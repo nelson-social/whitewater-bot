@@ -31,6 +31,8 @@ Overnight snow: ${conditions.overnightSnowCm} cm`;
       statusText += `
 Message: ${conditions.alert}`;
     }
+    statusText +=
+      '\n#Weather #Skiing #Snowboarding #Backcountry #SkiTouring #Splitboarding #Whitewater';
     return await this.mastodon.postStatus(statusText, mediaIds);
   }
 }
