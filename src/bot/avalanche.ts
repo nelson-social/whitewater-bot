@@ -21,7 +21,7 @@ export default class AvalancheReportBot extends BaseBot implements Bot {
     return await this.mastodon.postStatus(statusText);
   }
   formatStatus(report: AvalancheReport): string {
-    return `Forecast for Kootenay Boundary issued ${formatInTimeZone(
+    return `#AvalancheForecast for #KootenayBoundary issued ${formatInTimeZone(
       new Date(report.dateIssued),
       STATUS_TIME_ZONE,
       `MMM d, yyyy 'at' h:mma zzz`
@@ -32,6 +32,8 @@ ${report.highlights}
 Alpine: ${report.dangerRatings.alpine}
 Tree line: ${report.dangerRatings.treeline}
 Below tree line: ${report.dangerRatings.belowTreeline}
+
+#Skiing #Snowboarding #Splitboarding #Skitouring #Backcountry #Avalanche
 
 ${report.url}`;
   }
