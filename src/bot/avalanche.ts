@@ -33,7 +33,7 @@ Alpine: ${report.dangerRatings.alpine}
 Tree line: ${report.dangerRatings.treeline}
 Below tree line: ${report.dangerRatings.belowTreeline}
 
-#Skiing #Snowboarding #Splitboarding #Skitouring #Backcountry #Avalanche
+#Skiing #Snowboarding #Splitboarding #SkiTouring #Backcountry #Avalanche
 
 ${report.url}`;
   }

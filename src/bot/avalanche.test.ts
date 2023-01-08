@@ -27,7 +27,7 @@ Alpine: Considerable
 Tree line: Moderate
 Below tree line: Moderate
 
-#Skiing #Snowboarding #Splitboarding #Skitouring #Backcountry #Avalanche
+#Skiing #Snowboarding #Splitboarding #SkiTouring #Backcountry #Avalanche
 
 https://avalanche.ca/forecasts/ffefe681-ea06-4183-a888-d43f96601fef_abcf4fa25b3825c13033432191fc253745a0935af11bb2ce79589c7dc3628a3c`;
 
