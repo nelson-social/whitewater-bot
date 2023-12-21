@@ -33,6 +33,6 @@ Message: ${conditions.alert}`;
     }
     statusText +=
       '\n#Weather #Skiing #Snowboarding #Backcountry #Slackcountry #SkiTouring #Splitboarding #Whitewater';
-    return await this.mastodon.postStatus(statusText, mediaIds);
+    return await this.mastodon.postStatus(statusText, mediaIds.slice(0, 4));
   }
 }
