@@ -22,4 +22,3 @@ npm install
 MASTODON_TOKEN=<token> MASTODON_API=https://nelson.social/api/ npm run post-status (whitewater|avalanche)
 ```
 
-
